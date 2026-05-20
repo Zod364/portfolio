@@ -1,0 +1,448 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family:'Poppins';
+    list-style: none;   
+}
+
+body{
+    line-height: 1.2;   /* Due to  using bootstrap in contact.html file the line height is increased so we set it to 1.2 to make it normal and not too much space between lines of text */
+}
+
+header{
+    position: fixed;
+    top: 1rem;
+    left: 50%;
+    /* The left: 50%; brings header container to middle of page butnot by it's own center.
+    To center it completely we use below translateX(-50%) to center container to it's width and x-axis */
+    transform: translateX(-50%);
+    display: flex;
+    align-items:center;      /* Brings items to center*/
+    justify-content: center;  /* Brings items to center*/
+    gap: 5rem;
+    background-color:rgba(0, 0, 0, 0.81);
+    backdrop-filter: blur(8px);  /* To create glass effect*/
+    color: white;              /* Text color*/
+    padding: 0.5rem 1.5rem;     /* 0.5 is (top and bottom) and 1.5 is left and right or side padding */
+    border-radius: 3rem;  /* ##Circular corners## Because 3rem (roughly 48px) is a very large value compared to the small vertical padding (0.5rem). When the radius is larger than half the height of the element, the left and right sides become perfectly semi-circular.*/
+    z-index: 1000;              /* To make sure header is on top everything(z-axis) so make  z-index set to really big number*/
+    margin: 0 ;              /* To center header container horizontally within its parent element (body) and to prevent it from being affected by the left: 50% and transform: translateX(-50%) properties. */
+}
+
+.logo{
+    color: white;
+    font-size: 1.3rem;
+    font-weight: 600;    /* Mordern text font comes in multiple weight/thickness increases boldness or thiness ofthe text*/
+    text-wrap: nowrap;   /* When windows resized to small text gonna wrap(fold as two words so it can not in one line to adjust to screen) we don't want that as this is logo*/
+    transition: 0.3s ease-in-out; /* Transition for hover effect on logo*/
+}
+.logo:hover{
+    transform: scale(1.1);  /* Increase size(by 1.1x) when hovering cursor over it*/
+}
+.nav-links{
+    display:flex;
+    gap: 2rem;  /* Gap between texts*/
+    align-items: center;   /* Due to using bootstrap in contact.html file the nav-links are not in center of header so we use align-items: center to bring it to center of header container and margin and padding to 0 to remove extra space around nav-links */
+    margin: 0;
+    padding: 0;
+}
+
+li a{
+    position: relative; /* relative position cause we are going to create a hover effect */
+    color: white;
+    font-weight: 300;
+    line-height: normal;
+}
+
+li a::before{              /* Creates  an element(line below insde a page which position is absotute to it's parent element line46*/
+    position: absolute;  /* Absolute and fixed position relative to parent element(li a)*/
+    content: '';
+    width: 0;
+    left: 0;
+    height: 5px;
+    top: 25px;
+    border-radius: 1rem;
+    transition: 0.3s ease-in-out;
+    background: linear-gradient(to right, rgb(0, 157, 255),rgb(251, 0, 255) );
+}
+
+li a:hover::before{
+    width: 100%;  /* width chages from 0 to 100 when hovered over it*/
+}
+
+.visit-btn{
+    padding: 0.8rem 1.5rem;
+    border-radius: 3rem;  
+    border: none;
+    font-weight: 100;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    text-wrap: nowrap;
+    transition: 0.3s ease-in-out;
+    background: linear-gradient(to right, rgb(0, 157, 255),rgb(251, 0, 255)); 
+}
+.visit-btn:hover{
+    background: linear-gradient(to right, rgb(251, 0, 255), rgb(0, 157, 255));
+    transform: scale(1.03); 
+}
+
+#menu-icon{
+    font-size: 2rem;
+    display: none;
+
+}
+
+section{
+    min-height: 100vh;  /* Takes 100% of viewport hieght(vh)*/
+    padding: 8rem 12%;
+    width: 100%;
+    position: relative;
+    
+}
+
+.about{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about .about-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10rem;
+}
+
+.about img{
+    width: 30vw; /* Takes 30% of viewport width(vw)*/
+    border-radius: 50%;
+}
+
+.info-box{
+    display: flex;
+    flex-direction: column; /* To make all element sit on top each other instead side by sede(row)*/
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap:1.5rem;
+}
+.info-box h3{
+    font-size: 1.8rem;
+    font-weight: 500;
+    opacity: 0.8;
+}
+.info-box h1{
+    font-size: 4rem;
+    font-weight: 600;
+}
+.info-box span{
+    background: linear-gradient(to right, rgb(0, 157, 255),rgb(251, 0, 255) );
+    background-clip: text;  /* To have above color inn text we clip backgroud to text */
+    color: transparent;     /*Then make text transparent to put background color in text */
+    font-size: 2rem;
+
+}
+
+.btn-grp{   
+    display: flex;
+    gap: 1rem;
+}
+.btn{
+    border-radius: 3rem;
+    padding:0.5rem 1.5rem;
+    border: 2px solid black;
+    cursor: pointer; /*To signify that these buttons are clickable so we transform cursor */
+    font-weight: 500;
+    text-wrap: nowrap;
+    transition: 0.2s ease-in-out;
+}
+.btn:hover{
+    background-color: black;
+    color: white;
+}
+.socials{
+    display: flex;
+    gap: 2rem;
+}
+.socials i{
+    font-size: 2rem;   /*Increases size of icon*/
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+.socials i:hover{    /* Add hover over i (i:hover)so that it applies on individual icons separetly and not (.socials:hover) else botn icon scale simultaneosly*/
+    transform: scale(1.1);
+}
+
+.section-title{
+    text-align: center;
+    font-size: 4rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+}
+
+.experience-info{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+.experience img{
+    width: 24vw;
+    border-radius: 3rem;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(2,1fr); /* We have 4 cards so we conna need 2 column with eqal space.repeat(2,1fr)(fraction) mean 2 column with eqal space as in 1 fr*/
+    gap: 2rem;
+}
+.grid-card{
+    border: 2px solid black;
+    padding: 3rem;
+    border-radius: 3rem;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    align-items: baseline; /* Align items(icons,text etc) to baseline of grid card(central horizontal axis of card)*/
+    justify-content:left; /* Content will be shifted to left side in the grid-card and extra space towrds right sode (used to manage space between items)*/
+    transition: 0.2s ease-in-out;
+
+}
+
+.grid-card:hover{
+    transform: scale(1.02);
+    background-color: black;
+    color: white;
+}
+.grid-card i{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+.grid-card span{
+    font-size:1.5rem ;
+    font-weight:500 ;
+    background: linear-gradient(to right, rgb(0, 157, 255),rgb(251, 0, 255) );
+    background-clip: text;
+    color: transparent ;
+}
+
+/* For chrome/safari browser*/
+::-webkit-scrollbar{
+    width: 20px;
+}
+::-webkit-scrollbar-track{
+    background-color: rgb(255, 255, 255);
+}
+::-webkit-scrollbar-thumb{
+    background: linear-gradient(to bottom, #009dff,#ff00ff );
+}
+
+/* For firefox browser compatibility*/
+:root {
+    scrollbar-color: #009dff #ffffff;
+    scrollbar-width: thick;
+}
+
+.project-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 2rem;
+}
+.project-card{
+    display: flex;
+    padding: 3rem 2rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1.5rem;
+    border: 2px solid black;
+    border-radius: 3rem;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+}
+.project-card:hover{
+    transform: translateY(10px)scale(1.02);  /* Combine 2 effect. translateY moves card up and scalemakes it big*/
+    background: black;
+    color: white;
+}
+.project-card img{
+    width: 15vw;
+    border-radius: 1rem;
+}
+.project-card:hover .btn{
+    border: 2px solid white;
+    color: white;
+}
+.project-card:hover .btn:hover{
+    border: 2px solid white;
+    background-color: white;
+    color: black;
+}
+.project-card h3{
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.input-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    gap: 2rem;
+    margin-top: 5rem; 
+}
+.input-box input{
+    border: 2px solid black;
+    border-radius: 3rem;
+    padding: 2rem 8rem;
+    font-size: 3rem;
+}
+.input-box input::placeholder{
+    font-size: 3rem;
+}
+.input{
+    position: relative;/* As we wat the envelope icon be relative position to the input box and the position is for input class(input tag+icon) not input tag*/
+}
+.input i{
+    position: absolute;
+    font-size: 4rem;
+    top:50%;
+    left: 10px;
+    transform: translate(50%,-50%);
+}
+footer{
+    bottom: 0;
+    left: 0;
+    height: 10rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1 rem;
+    align-items: center;
+    justify-content: center;
+}
+footer ul{
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+footer ul li a{
+    color:black;
+    font-weight: 600;
+}
+.copyright{
+    font-size: 300;
+    margin-top: 2rem;
+}
+
+@media(max-width:1280px){
+ header{
+    padding: 1rem 2rem;
+    gap: 2rem;
+ }
+ .about .about-container{
+    gap: 3rem;
+ }
+ .experience-info{
+    flex-direction: column;
+ }
+ .input-box input{
+    padding: 2rem 5rem;
+    font-size: 2.5rem;
+ }
+ .input input::placeholder{
+    font-size: 2.5rem;
+ }
+ .input-box i{
+    font-size: 2.5rem;
+ }
+}
+
+@media(max-width:768px){
+    header{
+        padding: 1rem 1rem;
+        gap: 1rem;       
+    }
+    header .logo{
+        font-size: 1rem;
+    }
+    header .visit-btn{
+        display: none;
+    }
+    .about-container{
+        flex-direction: column;
+    }
+    .input-box .input{
+        padding:1rem 2rem ;
+        font-size: 1.8rem;
+    }
+    .input-box input-placeholder{
+        font-size: 1.5rem;
+    }
+    .input-box i{
+        display: none;
+    }
+    .grid{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .experience-info img{
+        width: 70vw;
+    }
+
+
+}
+
+@media(max-width:600px){
+    header #menu-icon{
+        display: block;
+    }
+    .nav-links{
+        position: absolute;
+        top: 100%;
+        margin-top: 1rem;
+        width: 85%;
+        padding: 1rem;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.902);
+        border-radius:3rem ;
+        display:none;
+    }
+    .nav-links li{
+        margin-top: 1.5rem;
+        padding: 1rem;
+    }
+    .nav-links.active{
+        display: block;
+    }
+    header{
+        padding: 1rem 5rem;
+        gap: 8rem;
+    }
+    header .logo{
+        font-family: 1.5rem;
+    }
+    .about-container img{
+        width: 80vw;
+    }
+    .input-box input{
+        padding: 0.5rem 3rem;
+        width:80%;
+        font-size: 1.5rem;
+    }
+    .input-box input::placeholder{
+        font-size: 1.5rem;
+    }
+    footer ul{
+        gap:1rem;
+    }
+
+}
